@@ -70,6 +70,7 @@
     <Compile Include="Class1.cs" />
     <Compile Include="Commands\Iblacklist.cs" />
     <Compile Include="Commands\Item.cs" />
+    <Compile Include="Commands\Save.cs" />
     <Compile Include="Commands\Vblacklist.cs" />
     <Compile Include="Commands\Vehicle.cs" />
     <Compile Include="EzBlacklistsConfig.cs" />

@@ -75,6 +75,28 @@ namespace EzBlacklists
             }
             catch (Exception)
             { }
+            Rocket.Core.Logging.Logger.Log("EzBlacklists special files loaded.");
+            for(int i= 0; i < Configuration.Instance.VehPerms.Count; i++)
+            {
+                string PermNode = Instance.Configuration.Instance.VehPerms[i];
+                List<ushort> gg = Instance.Configuration.Instance.vehicles[i];
+                foreach(ushort g in gg)
+                {
+                    SDG.Unturned.VehicleAsset va = (SDG.Unturned.VehicleAsset)SDG.Unturned.Assets.find(SDG.Unturned.EAssetType.VEHICLE, g);
+                    if (va != null) FastVehicleBL[va.GUID] = PermNode;
+                }
+            }
+            Rocket.Core.Logging.Logger.Log("Loaded vehicle blacklist from config into memory.");
+            for (int i = 0; i < Configuration.Instance.ItemPerms.Count; i++)
+            {
+                string PermNode = Instance.Configuration.Instance.ItemPerms[i];
+                List<ushort> gg = Instance.Configuration.Instance.items[i];
+                foreach (ushort g in gg)
+                {
+                    FastItemBL[g] = PermNode;
+                }
+            }
+            Rocket.Core.Logging.Logger.Log("Loaded item blacklist from config into memory.");
             Rocket.Core.Logging.Logger.Log("EzBlacklists has been loaded!");
         }
         protected override void Unload()
