@@ -57,8 +57,7 @@ namespace EzBlacklists.Commands
                         //VehicleAsset found = GetVehicleAsset(val);
                         //if (found == null)
                         //{
-                        var assets = Assets.find(EAssetType.VEHICLE).Cast<VehicleAsset>().Where(k => k?.vehicleName != null && k.name != null).ToList();
-                        foreach (var vehicle in assets)
+                        foreach (var vehicle in asset)
                         {
                             if (vehicle != null)
                             {
@@ -241,25 +240,6 @@ namespace EzBlacklists.Commands
             {
                 UnturnedChat.Say(player, "/v <Vehicle ID>");
             }
-        }
-        public static VehicleAsset GetVehicleAsset(string itemNameOrId)
-        {
-            var assets = Assets.find(EAssetType.VEHICLE).Cast<VehicleAsset>().Where(k => k?.vehicleName != null && k.name != null).OrderBy(k => k.vehicleName.Length).ToList();
-            VehicleAsset vehicleAsset;
-            if (int.TryParse(itemNameOrId, out int id))
-            {
-                vehicleAsset = assets.FirstOrDefault(k => k.id == id);
-            }
-            else
-            {
-                vehicleAsset = assets.FirstOrDefault(k =>
-                itemNameOrId.Equals(k.id.ToString(), StringComparison.OrdinalIgnoreCase) ||
-                itemNameOrId.Split(' ').All(l => k.vehicleName.ToLower().Contains(l)) ||
-                itemNameOrId.Split(' ').All(l => k.name.ToLower().Contains(l)));
-            }
-
-
-            return vehicleAsset;
         }
         private static bool IsValidVehicleId(ushort id) => Assets.find(EAssetType.VEHICLE, id) is VehicleAsset;
     }
