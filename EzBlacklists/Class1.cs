@@ -1,4 +1,4 @@
-using EzBlackLists;
+﻿using EzBlackLists;
 using Rocket.Core.Plugins;
 using System;
 using System.Collections.Generic;
