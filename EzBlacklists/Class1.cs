@@ -22,24 +22,29 @@ namespace EzBlacklists
                 if (File.Exists(dir + "/vehicles"))
                 {
                     string content = File.ReadAllText(dir + "/vehicles");
-                    try
+                    if (!string.IsNullOrEmpty(content))
                     {
-                        string[] cont = content.Split(',');
-                        Rocket.Core.Logging.Logger.Log(cont.Length.ToString() + " vehicles.");
-                        string PermNode = "";
-                        for (int i = 0; i < cont.Length; i++)
+                        try
                         {
-                            if (!System.Guid.TryParse(cont[i].Trim(), out System.Guid id))
+                            string[] cont = content.Split(',');
+                            Rocket.Core.Logging.Logger.Log(cont.Length.ToString() + " vehicles.");
+                            string PermNode = "";
+                            for (int i = 0; i < cont.Length; i++)
                             {
-                                PermNode = cont[i];
-                            }else
-                            {
-                                FastVehicleBL[id] = PermNode;
+                                if (!System.Guid.TryParse(cont[i].Trim(), out System.Guid id))
+                                {
+                                    PermNode = cont[i];
+                                }
+                                else
+                                {
+                                    FastVehicleBL[id] = PermNode;
+                                }
                             }
                         }
-                    }
-                    catch (Exception err) {
-                        Rocket.Core.Logging.Logger.LogException(err);
+                        catch (Exception err)
+                        {
+                            Rocket.Core.Logging.Logger.LogException(err);
+                        }
                     }
                 }
             }
@@ -50,26 +55,29 @@ namespace EzBlacklists
                 if (File.Exists(dir + "/items"))
                 {
                     string content = File.ReadAllText(dir + "/items");
-                    try
+                    if (!string.IsNullOrEmpty(content))
                     {
-                        string[] cont = content.Split(',');
-                        Rocket.Core.Logging.Logger.Log(cont.Length.ToString() + " items.");
-                        string PermNode = "";
-                        for (int i = 0; i < cont.Length; i++)
+                        try
                         {
-                            if (!ushort.TryParse(cont[i].Trim(), out ushort id))
+                            string[] cont = content.Split(',');
+                            Rocket.Core.Logging.Logger.Log(cont.Length.ToString() + " items.");
+                            string PermNode = "";
+                            for (int i = 0; i < cont.Length; i++)
                             {
-                                PermNode = cont[i];
-                            }
-                            else
-                            {
-                                FastItemBL[id] = PermNode;
+                                if (!ushort.TryParse(cont[i].Trim(), out ushort id))
+                                {
+                                    PermNode = cont[i];
+                                }
+                                else
+                                {
+                                    FastItemBL[id] = PermNode;
+                                }
                             }
                         }
-                    }
-                    catch (Exception err)
-                    {
-                        Rocket.Core.Logging.Logger.LogException(err);
+                        catch (Exception err)
+                        {
+                            Rocket.Core.Logging.Logger.LogException(err);
+                        }
                     }
                 }
             }

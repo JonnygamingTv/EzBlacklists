@@ -23,10 +23,36 @@ namespace EzBlackLists
             maxSpawnItems = 10;
             separator = ",";
             namesep = "_";
-            vehicles = new List<List<ushort>>();
-            items = new List<List<ushort>>();
-            ItemPerms = new List<string>();
-            VehPerms = new List<string>();
+            vehicles = new List<List<ushort>> {
+                new List<ushort>
+                {
+                    33, 108
+                },
+                new List<ushort> {
+                    109
+                }
+            };
+            items = new List<List<ushort>>
+            {
+                new List<ushort>
+                {
+                    99, 132
+                },
+                new List<ushort>
+                {
+                    519, 520
+                }
+            };
+            ItemPerms = new List<string>
+            {
+                "bypass.one",
+                "bypass.two"
+            };
+            VehPerms = new List<string>
+            {
+                "bypass2.one",
+                "bypass2.two"
+            };
         }
     }
 }
