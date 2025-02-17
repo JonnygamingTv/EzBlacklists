@@ -62,7 +62,7 @@ namespace EzBlacklists.Commands
                 else
                 {
                     EzBlacklists.Instance.FastVehicleBL.Add(gid, perm);
-                    Rocket.Unturned.Chat.UnturnedChat.Say(caller, "Added (" + gid.ToString() + ") to blacklist.");
+                    Rocket.Unturned.Chat.UnturnedChat.Say(caller, "Added (" + gid.ToString() + ") to blacklist. Type /restrictsave to save.");
                 }
             }
             else

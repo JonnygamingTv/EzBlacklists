@@ -206,7 +206,7 @@ namespace EzBlacklists.Commands
                 if (id != (ushort)0)
                 {
                     ItemAsset gg = (ItemAsset) Assets.find(EAssetType.ITEM, id);
-                    if (!searched && gg != null)
+                    if (!searched && gg == null)
                     {
                         Rocket.Unturned.Chat.UnturnedChat.Say(player, EzBlacklists.Instance.Translate("item_not_found", id.ToString()));
                         return;

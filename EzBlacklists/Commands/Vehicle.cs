@@ -209,7 +209,7 @@ namespace EzBlacklists.Commands
                 if (id != (ushort)0)
                 {
                     which = (VehicleAsset) Assets.find(EAssetType.VEHICLE, id); // (VehicleAsset)Assets.FindBaseVehicleAssetByGuidOrLegacyId(System.Guid.Empty, id);
-                    if (!searched && which != null)
+                    if (!searched && which == null)
                     {
                         UnturnedChat.Say(player, EzBlacklists.Instance.Translate("vehicle_not_found", id.ToString()));
                         return;
